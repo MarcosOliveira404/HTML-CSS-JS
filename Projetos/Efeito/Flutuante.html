@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutuar Suavemente</title>
+    <style>
+        
+        .float-element {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+            50% {
+                transform: translate(-50%, -50%) translateY(-20px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="float-element">Flutuar</div>
+    <script>
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatElement = document.querySelector('.float-element');
+
+            floatElement.addEventListener('click', function() {
+                if (floatElement.style.animationPlayState === 'paused') {
+                    floatElement.style.animationPlayState = 'running';
+                } else {
+                    floatElement.style.animationPlayState = 'paused';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
