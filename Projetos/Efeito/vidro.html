@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            width: 100%;
+            min-height: 100vh; /* Altura total da tela */
+            background-image: url(img/wall.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            display: flex; /* Centralizar elemento */
+            align-items: center;
+            justify-content: center;
+        }
+        .container{
+            width: 100%;
+            max-width: 500px;
+            background-color: transparent; /* Sem color */
+            padding: 40px;
+
+            backdrop-filter: blur(8px); /* Desfoque */
+            border: 2px solid white;
+            border-radius: 10px; 
+
+            overflow: hidden; /* Tudo o que estiver fora de container nao vai aparecer */
+        }
+        .text{
+            color: white;
+            
+            position: relative;
+            top: 180px;
+
+            transition: top 1s;
+        }
+
+        .container:hover .text{
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text">
+            <h1> Ola Mundo </h1>
+            <p>Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Dignissimos ipsum voluptatem,
+                expedita temporibus minus laborum mollitia vel
+                hic. Doloremque corporis tempore facilis. 
+                Esse illo dolorem cumque unde autem, 
+                suscipit deleniti.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .deg{
+            width: 100%;
+            height: 100vh;
+            padding: 300px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(to left, blue, orangered, yellow);
+            background-size: 500% 100%;
+            animation: deg 4s infinite alternate;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+        }
+
+        h1{
+            color: white;
+        }
+
+        @keyframes deg{
+            0%{
+                background-position-x: 0%;
+            }
+            100%{
+                background-position-x: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <dic class="deg">
+        <h1>  Grand </br> Theft  </br> Auto   </h1>
+    </dic>
+</body>
+</html>

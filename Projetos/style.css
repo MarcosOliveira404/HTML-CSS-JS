@@ -1,0 +1,99 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Color: #c46115;
+}
+
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: var(--Color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+/* Lista de projetos */
+main {
+    flex: 1;
+    padding: 1rem;
+}
+
+.project-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.project-button {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--Color);
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-button:hover {
+    background-color: var(--Color);
+    color: white;
+}
+
+.subproject-list {
+    list-style: none;
+    padding: 0.5rem 1rem;
+    display: none;
+    border-top: 1px solid #ddd;
+}
+
+.subproject-list li a {
+    text-decoration: none;
+    color: #333;
+    padding: 0.5rem 0;
+    display: block;
+    transition: color 0.3s;
+}
+
+.subproject-list li a:hover {
+    color: var(--Color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
