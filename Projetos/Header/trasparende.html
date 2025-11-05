@@ -1,0 +1,187 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#">Meu site <span>Modular</span></a>
+
+    <!-- Botão hambúrguer (aparece no mobile) -->
+    <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu">
+      <span class="hamburger"></span>
+    </button>
+
+    <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
+      <a href="#">Início</a>
+      <a href="#">Sobre</a>
+      <a href="#">Serviços</a>
+      <a href="#">Contato</a>
+      <a href="#" class="cta">Entrar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero para mostrar o efeito do header transparente -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Bem-vindo ao Meu site Modular</h1>
+    <p>Design limpo, moderno e transparente.</p>
+  </div>
+</section>
+
+<style>
+  /* reset simples */
+  *{box-sizing:border-box;margin:0;padding:0}
+  a{color:inherit;text-decoration:none}
+
+  /* HEADER (transparente) */
+  .site-header{
+    position: absolute; /* fica sobre o hero */
+    top:0; left:0; right:0;
+    z-index:50;
+    pointer-events:auto;
+  }
+
+  .header-inner{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:18px 20px;
+    backdrop-filter: blur(6px); /* leve blur por trás do header */
+  }
+
+  /* Logo */
+  .logo{
+    font-weight:700;
+    font-size:1.05rem;
+    color: #ffffff;
+    letter-spacing:0.2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+  .logo span{font-weight:300}
+
+  /* Navegação desktop */
+  .main-nav{
+    display:flex;
+    gap:18px;
+    align-items:center;
+  }
+  .main-nav a{
+    color:#fff;
+    padding:8px 10px;
+    border-radius:6px;
+    font-weight:500;
+    transition:background .18s, transform .12s;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  }
+  .main-nav a:hover{ background: rgba(255,255,255,0.07); transform:translateY(-2px); }
+
+  .main-nav .cta{
+    padding:8px 14px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Botão hamburger (mobile) */
+  .nav-toggle{
+    display:none;
+    background:transparent;
+    border:0;
+    cursor:pointer;
+    padding:8px;
+  }
+  .hamburger{
+    display:block;
+    width:22px;
+    height:2px;
+    background:#fff;
+    position:relative;
+    box-shadow:0 2px 0 #fff, 0 -6px 0 #fff;
+  }
+
+  /* HERO (imagem de fundo para mostrar o header transparente) */
+  .hero{
+    height:100vh;
+    background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s='); /* troque a URL */
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    color:#fff;
+  }
+  /* Overlay escuro para dar contraste com o header */
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45));
+    z-index:0;
+  }
+  .hero-content{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:0 18px;
+  }
+  .hero-content h1{
+    font-size:clamp(28px,6vw,56px);
+    text-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    margin-bottom:12px;
+  }
+  .hero-content p{ font-size:1.05rem; opacity:0.95 }
+
+  /* RESPONSIVO */
+  @media (max-width:900px){
+    .main-nav{ display:none; } /* escondido no mobile */
+    .nav-toggle{ display:block; }
+
+    /* menu móvel (quando aberto) */
+    .main-nav.open{
+      position: fixed;
+      top:70px;
+      right:18px;
+      background: rgba(10,10,10,0.8);
+      backdrop-filter: blur(8px);
+      border-radius:10px;
+      padding:12px;
+      flex-direction:column;
+      gap:12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      display:flex;
+    }
+    .header-inner{ padding:14px 18px; }
+  }
+
+  /* opção para quando o header ficar em cima de conteúdos claros (troque as cores conforme precisar) */
+  .site-header.light .logo,
+  .site-header.light .main-nav a{ color:#111; text-shadow:none }
+</style>
+
+<script>
+  // Toggle menu mobile simples e acessível
+  (function(){
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-nav');
+
+    if(!btn || !nav) return;
+
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.setAttribute('aria-label', expanded ? 'Abrir menu' : 'Fechar menu');
+
+      nav.classList.toggle('open');
+    });
+
+    // Fecha o menu ao clicar fora (opcional)
+    document.addEventListener('click', (e) => {
+      if(!nav.classList.contains('open')) return;
+      if(e.target.closest('.main-nav') || e.target.closest('.nav-toggle')) return;
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Abrir menu');
+    });
+  })();
+</script>

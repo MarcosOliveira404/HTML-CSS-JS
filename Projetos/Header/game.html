@@ -1,0 +1,61 @@
+<header>
+    <h1>🎮 Meu site Gamer</h1>
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Jogos</a>
+        <a href="#">Suporte</a>
+    </nav>
+
+    <style>
+        /* Estilo geral do header gamer */
+        header {
+            background: linear-gradient(90deg, #0f0f1a, #1a1a40);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #0ff;
+            box-shadow: 0px 0px 15px #0ff;
+        }
+
+        /* Título com efeito neon */
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #0ff;
+            text-shadow: 0 0 8px #0ff, 0 0 15px #00f6ff, 0 0 30px #0ff;
+            margin: 0;
+        }
+
+        /* Links do menu */
+        nav a {
+            font-family: 'Press Start 2P', cursive;
+            text-decoration: none;
+            color: #fff;
+            margin: 0 15px;
+            padding: 8px 12px;
+            transition: 0.3s;
+            border-radius: 8px;
+        }
+
+        /* Hover com efeito de luz */
+        nav a:hover {
+            background: #0ff;
+            color: #0f0f1a;
+            box-shadow: 0px 0px 10px #0ff, 0px 0px 20px #00f6ff;
+        }
+
+        /* Ajuste responsivo */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                margin-top: 10px;
+            }
+        }
+    </style>
+
+    <!-- Importando fontes gamer -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Press+Start+2P&display=swap" rel="stylesheet">
+</header>
