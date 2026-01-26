@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão Border Slide</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #222;
+        }
+
+        .border-slide-button {
+            position: relative;
+            padding: 16px 40px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: #222;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        /* Linhas horizontais */
+        .border-slide-button::before,
+        .border-slide-button::after {
+            content: '';
+            position: absolute;
+            background: #00ffff;
+            transition: 0.5s;
+        }
+
+        .border-slide-button::before {
+            height: 2px;
+            width: 100%;
+            top: 0;
+            left: -100%;
+        }
+
+        .border-slide-button::after {
+            height: 2px;
+            width: 100%;
+            bottom: 0;
+            right: -100%;
+        }
+
+        .border-slide-button:hover::before {
+            left: 0;
+        }
+
+        .border-slide-button:hover::after {
+            right: 0;
+        }
+
+        /* Linhas verticais */
+        .border-slide-button span {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: #00ffff;
+            top: -100%;
+            left: 0;
+            transition: 0.5s;
+        }
+
+        .border-slide-button span:nth-child(2) {
+            left: auto;
+            right: 0;
+            top: 100%;
+        }
+
+        .border-slide-button:hover span:nth-child(1) {
+            top: 0;
+        }
+
+        .border-slide-button:hover span:nth-child(2) {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="border-slide-button">
+        Clique Aqui
+        <span></span>
+        <span></span>
+    </button>
+</body>
+</html>

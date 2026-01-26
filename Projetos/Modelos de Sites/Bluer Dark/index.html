@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Header & Footer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <h2 id="logo">@marcosoliveirazyx</h2>
+    <nav id="nav">
+      <button id="btn-mobile" aria-label="Abrir Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
+        Menu <span id="hak"></span>
+      </button>
+      <ul id="menu" role="menu">
+        <li><a class="nav-link" href="#">Botão 1</a></li>
+        <li><a class="nav-link" href="#">Botão 2</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Texto Central -->
+  <section id="hero">
+    <p>
+      "Tenha compaixão, ajude os seus companheiros<br>
+      em qualquer oportunidade.<br>
+      Se a oportunidade não surge,<br>
+      saia do seu caminho para encontrá-la."
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="box">
+        <h2>Sobre o Site</h2>
+        <p>
+          Apresentar serviços voltados para tecnologia: programação web, manutenção, design 2D, edição de vídeo e imagens, e segurança da informação.
+        </p>
+        <h3>Redes Sociais</h3>
+        <a href="https://www.instagram.com/marcosoliveirazyx" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram: @marcosoliveirazyx
+        </a>
+      </div>
+
+      <div class="box">
+        <h2>Contato</h2>
+        <p><i class="fas fa-map-marker-alt"></i> Brasil, CE</p>
+        <p><i class="fas fa-phone-alt"></i> (00) 00000-0000</p>
+        <p><i class="fas fa-envelope"></i> marcosrikelmexyz@gmail.com</p>
+      </div>
+
+      <div class="box">
+        <h2>Mensagem</h2>
+        <form>
+          <input type="email" placeholder="Seu email" required>
+          <textarea rows="3" placeholder="Sua mensagem" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Replicado e modificado por <a href="https://www.instagram.com/marcosoliveirazyx">@marcos</a> &copy; 2024</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

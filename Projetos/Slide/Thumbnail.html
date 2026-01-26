@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thumbnail Gallery Slider</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+
+  .gallery-slider {
+    width: 90%;
+    max-width: 700px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+  }
+
+  .main-slide {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .main-slide img {
+    width: 100%;
+    height: 860px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 10px;
+  }
+
+  .arrows button {
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+  }
+
+  .arrows button:hover {
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  .thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+  }
+
+  .thumbnails img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: border 0.3s;
+  }
+
+  .thumbnails img.active {
+    border: 2px solid #333;
+  }
+
+  @media (max-width: 600px) {
+    .main-slide img {
+      height: 250px;
+    }
+    .thumbnails img {
+      width: 60px;
+      height: 45px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .main-slide img {
+      height: 180px;
+    }
+    .thumbnails img {
+      width: 50px;
+      height: 35px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="gallery-slider">
+  <div class="main-slide">
+    <img src="img/foto05.jpeg" alt="Imagem Principal" id="current-slide">
+    <div class="arrows">
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
+  </div>
+
+  <div class="thumbnails">
+    <img src="img/foto01.jpeg" alt="Imagem 1" class="active">
+    <img src="img/foto02.jpeg" alt="Imagem 2">
+    <img src="img/foto03.jpeg" alt="Imagem 3">
+    <img src="img/foto04.jpg" alt="Imagem 4">
+  </div>
+</div>
+
+<script>
+  const mainImage = document.getElementById('current-slide');
+  const thumbnails = document.querySelectorAll('.thumbnails img');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+
+  let currentIndex = 0;
+
+  function updateSlide(index) {
+    currentIndex = index;
+    mainImage.src = thumbnails[index].src;
+
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    thumbnails[index].classList.add('active');
+  }
+
+  thumbnails.forEach((thumb, i) => {
+    thumb.addEventListener('click', () => {
+      updateSlide(i);
+    });
+  });
+
+  prevBtn.addEventListener('click', () => {
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) newIndex = thumbnails.length - 1;
+    updateSlide(newIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    let newIndex = currentIndex + 1;
+    if (newIndex >= thumbnails.length) newIndex = 0;
+    updateSlide(newIndex);
+  });
+
+  // Auto slide opcional
+  setInterval(() => {
+    let newIndex = currentIndex + 1;
+    if (newIndex >= thumbnails.length) newIndex = 0;
+    updateSlide(newIndex);
+  }, 5000);
+</script>
+
+</body>
+</html>

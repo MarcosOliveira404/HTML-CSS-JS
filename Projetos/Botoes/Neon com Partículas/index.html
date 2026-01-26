@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botão Futurista Neon</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #000;
+        overflow: hidden;
+    }
+
+    .neon-button {
+        position: relative;
+        padding: 20px 50px;
+        font-size: 1.5rem;
+        color: #0ff;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        background: transparent;
+        border: 2px solid #0ff;
+        cursor: pointer;
+        z-index: 1;
+        transition: 0.3s;
+        box-shadow:
+            0 0 5px #0ff,
+            0 0 10px #0ff,
+            0 0 20px #0ff;
+    }
+
+    /* Fundo animado do botão */
+    .neon-button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, #00ffff, #ffffff, #7a007e, #ff4081);
+        z-index: -1;
+        filter: blur(30px);
+        opacity: 0.6;
+        transform: scale(1.2);
+        animation: neonGradient 5s linear infinite;
+    }
+
+    @keyframes neonGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Partículas neon */
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #0ff;
+        border-radius: 50%;
+        opacity: 0.8;
+        pointer-events: none;
+        animation: moveParticle linear infinite;
+    }
+
+    @keyframes moveParticle {
+        0% { transform: translateY(0px) translateX(0px); opacity: 1; }
+        100% { transform: translateY(-200px) translateX(50px); opacity: 0; }
+    }
+
+    .neon-button:hover {
+        color: #ffffff;
+        border-color: #ffffff;
+        box-shadow:
+            0 0 10px #ffffff,
+            0 0 20px #ffffff,
+            0 0 40px #ffffff;
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+
+<button class="neon-button">Futurista</button>
+
+<script>
+    // Criar partículas ao redor do botão
+    const button = document.querySelector('.neon-button');
+    const numParticles = 30;
+
+    for(let i=0; i<numParticles; i++) {
+        let particle = document.createElement('div');
+        particle.classList.add('particle');
+        resetParticle(particle);
+        document.body.appendChild(particle);
+
+        animateParticle(particle);
+    }
+
+    function resetParticle(p) {
+        p.style.left = `${button.offsetLeft + Math.random()*button.offsetWidth}px`;
+        p.style.top = `${button.offsetTop + Math.random()*button.offsetHeight}px`;
+        p.style.width = `${2 + Math.random()*4}px`;
+        p.style.height = p.style.width;
+        p.style.background = `hsl(${Math.random()*360}, 100%, 60%)`;
+        p.style.opacity = Math.random();
+        p.style.transition = `0.5s`;
+    }
+
+    function animateParticle(p) {
+        let xDir = (Math.random()-0.5) * 200;
+        let yDir = (Math.random()-0.5) * 200;
+        p.animate([
+            { transform: 'translate(0px,0px)', opacity: p.style.opacity },
+            { transform: `translate(${xDir}px, ${yDir}px)`, opacity: 0 }
+        ], {
+            duration: 2000 + Math.random()*3000,
+            iterations: Infinity,
+            easing: 'linear'
+        });
+    }
+
+</script>
+</body>
+</html>

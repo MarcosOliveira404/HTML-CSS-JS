@@ -1,6 +1,9 @@
 const inputs = document.querySelectorAll('.input');
 const button = document.querySelector('.login__button');
+const togglePassword = document.querySelector('.show-password');
+const passwordInput = document.querySelector('input[name="password"]');
 
+// Label flutuante
 const handleFocus = ({ target }) => {
   const span = target.previousElementSibling;
   span.classList.add('span-active');
@@ -13,9 +16,9 @@ const handleFocusOut = ({ target }) => {
   }
 }
 
+// Habilitar botão
 const handleChange = () => {
   const [username, password] = inputs;
-
   if (username.value && password.value.length >= 8) {
     button.removeAttribute('disabled');
   } else {
@@ -23,6 +26,14 @@ const handleChange = () => {
   }
 }
 
-inputs.forEach((input) => input.addEventListener('focus', handleFocus));
-inputs.forEach((input) => input.addEventListener('focusout', handleFocusOut));
-inputs.forEach((input) => input.addEventListener('input', handleChange));
+// Mostrar/ocultar senha
+togglePassword.addEventListener('click', () => {
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+  togglePassword.textContent = type === 'password' ? '👁' : '🙈';
+});
+
+// Eventos
+inputs.forEach(input => input.addEventListener('focus', handleFocus));
+inputs.forEach(input => input.addEventListener('focusout', handleFocusOut));
+inputs.forEach(input => input.addEventListener('input', handleChange));

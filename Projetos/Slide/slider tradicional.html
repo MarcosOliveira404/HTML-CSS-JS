@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slider Minimalista Responsivo</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+
+  .slider {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+  }
+
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slides img {
+    width: 100%;
+    height: 860px; /* altura fixa para manter proporção */
+    object-fit: cover; /* ajusta a imagem sem deformar */
+    flex-shrink: 0;
+  }
+
+  /* Botões de navegação */
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+  }
+
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  /* Indicadores */
+  .dots {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #fff;
+  }
+
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .dot.active {
+    background-color: #333;
+  }
+
+  @media (max-width: 700px) {
+    .slides img {
+      height: 300px; /* reduz altura em telas médias */
+    }
+  }
+
+  @media (max-width: 500px) {
+    .slides img {
+      height: 200px; /* reduz altura em telas pequenas */
+    }
+    .prev, .next {
+      padding: 6px 10px;
+      font-size: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="slides">
+    <img src="img/foto01.jpeg" alt="Imagem 1">
+    <img src="img/foto02.jpeg" alt="Imagem 2">
+    <img src="img/foto03.jpeg" alt="Imagem 3">
+    <img src="img/foto04.jpg" alt="Imagem 4">
+  </div>
+
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelector('.slides');
+  const images = document.querySelectorAll('.slides img');
+  const prev = document.querySelector('.prev');
+  const next = document.querySelector('.next');
+  const dots = document.querySelectorAll('.dot');
+
+  let index = 0;
+
+  function showSlide(i) {
+    if (i < 0) index = images.length - 1;
+    else if (i >= images.length) index = 0;
+    else index = i;
+
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+  }
+
+  prev.addEventListener('click', () => {
+    showSlide(index - 1);
+  });
+
+  next.addEventListener('click', () => {
+    showSlide(index + 1);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      showSlide(i);
+    });
+  });
+
+  // Auto slide
+  setInterval(() => {
+    showSlide(index + 1);
+  }, 5000);
+</script>
+
+</body>
+</html>

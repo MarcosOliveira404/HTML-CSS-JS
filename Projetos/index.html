@@ -1,97 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Mini Projetos</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus Mini Projetos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>HTML e CSS</h1>
-        <h2> Mini Projetos </h2>
-    </header>
-    <main>
-        <ul class="project-list">
-            <li class="project-item">
-                <button class="project-button"> Botoes </button>
-                <ul class="subproject-list">
-                    <li><a href="Botoes/Modelo 01/index.html" target="_blank"> Modelo - I </a></li>
-                    <li><a href="Botoes/Modelo 02/index.html" target="_blank"> Modelo - II </a></li>
-                </ul>
-            </li>
+<header>
+  <div class="header-container">
+    <h1>Meus Mini Projetos</h1>
+    <p>HTML, CSS e JS – Portfólio Clean</p>
+    <button id="dark-mode-toggle"></button>
+  </div>
+</header>
 
-            <li class="project-item">
-                <button class="project-button"> Efeito  </button>
-                <ul class="subproject-list">
-                    <li><a href="Efeito/BordaDinamica.html" target="_blank"> Borda Dinamica - I </a></li>
-                    <li><a href="Efeito/degrader.html" target="_blank"> GTA - II </a></li>
-                    <li><a href="Efeito/vidro.html" target="_blank"> Vidro - III </a></li>
-                    <li><a href="Efeito/Flutuante.html" target="_blank"> Flutuante - IV </a></li>
-                    <li><a href="TopAnimes/index.html" target="_blank"> Paralax - V </a></li>
-                </ul>
-            </li>
 
-            <li class="project-item">
-                <button class="project-button"> Efeito Cubo </button>
-                <ul class="subproject-list">
-                    <li><a href="Efeito Cubo/01Efeito/index.html" target="_blank"> Cubo - I  </a></li>
-                    <li><a href="Efeito Cubo/02Efeito/index.html" target="_blank"> Cubo - II </a></li>
-                    <li><a href="Efeito Cubo/03Efeito/index.html" target="_blank"> Cubo - III  </a></li>
-                    <li><a href="Efeito Cubo/04Efeito/index.html" target="_blank"> Cubo - IV </a></li>
-                    <li><a href="Efeito Cubo/05Efeito/index.html" target="_blank"> Cubo - V  </a></li>
-                </ul>
-            </li>
+  <main class="projects-container">
+    <!-- Botões -->
+    <section class="project-card">
+      <button class="project-button" data-modal="modal-botoes">Botoes</button>
+    </section>
+    <section class="project-card">
+      <button class="project-button" data-modal="modal-efeito">Efeito</button>
+    </section>
+    <section class="project-card">
+      <button class="project-button" data-modal="modal-header">Header</button>
+    </section>
+    <section class="project-card">
+      <button class="project-button" data-modal="modal-cubo">Efeito Cubo</button>
+    </section>
+    <section class="project-card">
+      <button class="project-button" data-modal="modal-logins">Logins</button>
+    </section>
+  </main>
 
-            <li class="project-item">
-                <button class="project-button"> Logins </button>
-                <ul class="subproject-list">
-                    <li><a href="Logins/Arcane/index.html" target="_blank"> Arcane </a></li>
-                    <li><a href="Logins/Game/index.html" target="_blank"> Game  </a></li>
-                    <li><a href="Logins/Light end Darck/index.html" target="_blank"> Light end Darck </a></li>
-                    <li><a href="Logins/Onda Japonesa/index.html" target="_blank"> Onda Japonesa </a></li>
-                </ul>
-            </li>
+  <!-- MODAIS -->
+  <div id="modal-botoes" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Botoes</h3>
+    <ul>
+      <li><a href="Botoes/Border Slide/index.html" target="_blank">I - Border Slide</a></li>
+      <li><a href="Botoes/Fogo Doom/index.html" target="_blank">II - Fogo Doom</a></li>
+      <li><a href="Botoes/Glass Futurista/index.html" target="_blank">III - Glass Futurista</a></li>
+      <li><a href="Botoes/Hover Animated Split Borders/index.html" target="_blank">IV - Hover Animated Split Borders</a></li>
+      <li><a href="Botoes/Neon 3D/index.html" target="_blank">V - Neon 3D</a></li>
+      <li><a href="Botoes/Neon com Partículas/index.html" target="_blank">VI - Neon com Partículas</a></li>
+      <li><a href="Botoes/Neon Outline Effect/index.html" target="_blank">VII - Neon Outline Effect</a></li>
+    </ul>
+  </div>
+</div>
 
-            <li class="project-item">
-                <button class="project-button"> Mobile First </button>
-                <ul class="subproject-list">
-                    <li><a href="Mobile First/index.html" target="_blank"> Responsivo  </a></li>
-                </ul>
-            </li>
+<!-- Efeito -->
+<div id="modal-efeito" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Efeito</h3>
+    <ul>
+      <li><a href="Efeito/BordaDinamica.html" target="_blank">Borda Dinâmica</a></li>
+      <li><a href="Efeito/degrader.html" target="_blank">GTA</a></li>
+      <li><a href="Efeito/vidro.html" target="_blank">Vidro</a></li>
+      <li><a href="Efeito/Flutuante.html" target="_blank">Flutuante</a></li>
+      <li><a href="Efeito/Onda.html" target="_blank">Onda</a></li>
+      <li><a href="Efeito/TopAnimes/index.html" target="_blank">Parallax</a></li>
+    </ul>
+  </div>
+</div>
 
-            <li class="project-item">
-                <button class="project-button"> Modelo de Site </button>
-                <ul class="subproject-list">
-                    <li><a href="Modelos de Sites/Modelo 01 - Bluer Dark/index.html" target="_blank"> Bluer Dark </a></li>
-                </ul>
-            </li>
+<!-- Header -->
+<div id="modal-header" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Header</h3>
+    <ul>
+      <li><a href="Header/header.html" target="_blank">Modelo I</a></li>
+      <li><a href="Header/header2.html" target="_blank">Modelo II</a></li>
+      <li><a href="Header/Megamenu.html" target="_blank">Mega Menu</a></li>
+      <li><a href="Header/MenuHamburguer.html" target="_blank">Menu Hamburguer</a></li>
+      <li><a href="Header/Sticky.html" target="_blank">Sticky</a></li>
+      <li><a href="Header/trasparende.html" target="_blank">Transparente</a></li>
+      <li><a href="Header/vertical.html" target="_blank">Vertical</a></li>
+    </ul>
+  </div>
+</div>
 
-            <li class="project-item">
-                <button class="project-button"> Slider </button>
-                <ul class="subproject-list">
-                    <li><a href="Slide/Modelo_01/index.html" target="_blank"> Modelo - I </a></li>
-                </ul>
-            </li>
+<!-- Efeito Cubo -->
+<div id="modal-cubo" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Efeito Cubo</h3>
+    <ul>
+      <li><a href="Efeito Cubo/Double 3D Rotating/index.html" target="_blank">Double 3D Rotating</a></li>
+      <li><a href="Efeito Cubo/Efeito Neon/index.html" target="_blank">Efeito Neon</a></li>
+      <li><a href="Efeito Cubo/Floating Neon 3D Cube/index.html" target="_blank">Floating Neon 3D Cube</a></li>
+      <li><a href="Efeito Cubo/Isometric Neon 3D Cubes/index.html" target="_blank">Isometric Neon 3D Cubes</a></li>
+      <li><a href="Efeito Cubo/Neon Twin Cubes/index.html" target="_blank">Neon Twin Cubes</a></li>
+      <li><a href="Efeito Cubo/Skewed 3D Moving Blocks/index.html" target="_blank">Skewed 3D Moving Blocks</a></li>
+    </ul>
+  </div>
+</div>
 
-            <li class="project-item">
-                <button class="project-button"> Header </button>
-                <ul class="subproject-list">
-                    <li><a href="Header/header.html" target="_blank"> Modelo - I </a></li>
-                    <li><a href="Header/header2.html" target="_blank"> Modelo - II </a></li>
-                    <li><a href="Header/Megamenu.html" target="_blank"> Mega Menu</Menu>u </a></li>
-                    <li><a href="Header/MenuHamburguer.html" target="_blank"> Menu Hamburguer </a></li>
-                    <li><a href="Header/Sticky.html" target="_blank"> Sticky </a></li>
-                    <li><a href="Header/trasparende.html" target="_blank"> Trasparende </a></li>
-                    <li><a href="Header/vertical.html" target="_blank"> Vertical </a></li>
-                </ul>
-            </li>
+<!-- Logins -->
+<div id="modal-logins" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Logins</h3>
+    <ul>
+      <li><a href="Logins/Arcane/index.html" target="_blank">Arcane</a></li>
+      <li><a href="Logins/Game/index.html" target="_blank">Game</a></li>
+      <li><a href="Logins/Light end Darck/index.html" target="_blank">Light and Dark</a></li>
+      <li><a href="Logins/Onda Japonesa/index.html" target="_blank">Onda Japonesa</a></li>
+    </ul>
+  </div>
+</div>
 
-        </ul>
-    </main>
-    <footer>
-        <p>&copy; 2024 - <a href="https://github.com/MarcosOliveira404" target="_blank"> Meus Projetos </a></p>
-    </footer>
-    <script src="script.js"></script>
+<!-- Mobile First -->
+<div id="modal-mobile" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Mobile First</h3>
+    <ul>
+      <li><a href="Mobile First/index.html" target="_blank">Responsivo</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Modelo de Site -->
+<div id="modal-modelo" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Modelo de Site</h3>
+    <ul>
+      <li><a href="Modelos de Sites/Modelo 01 - Bluer Dark/index.html" target="_blank">Bluer Dark</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Slider -->
+<div id="modal-slider" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Slider</h3>
+    <ul>
+      <li><a href="Slide/Minimalist Carousel.html" target="_blank">Minimalist Carousel</a></li>
+      <li><a href="Slide/slider tradicional.html" target="_blank">Slider Tradicional</a></li>
+      <li><a href="Slide/Thumbnail.html" target="_blank">Thumbnail</a></li>
+    </ul>
+  </div>
+</div>
+
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2026 - <a href="https://github.com/MarcosOliveira404" target="_blank">Meus Projetos</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão Neon 3D</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000;
+        }
+
+        .neon-3d-button {
+            position: relative;
+            padding: 18px 50px;
+            font-size: 1.6rem;
+            color: #0ff;
+            background: #111;
+            border: 2px solid #0ff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+        }
+
+        .neon-3d-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 5px;
+            box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff, 0 0 80px #0ff;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .neon-3d-button:hover::before {
+            opacity: 1;
+        }
+
+        .neon-3d-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff, 0 0 100px #0ff;
+        }
+    </style>
+</head>
+<body>
+    <button class="neon-3d-button">Clique Aqui</button>
+</body>
+</html>

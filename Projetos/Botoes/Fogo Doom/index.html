@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botão Fogo Doom</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #111;
+    overflow: hidden;
+  }
+
+  .doom-button {
+    position: relative;
+    padding: 20px 60px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid #ff4500;
+    background: #222;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255,69,0,0.5);
+  }
+
+  /* Chama animada por baixo do botão */
+  .doom-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #ff4500, #ffae00, #ff4500, #ff0000, #ffae00);
+    filter: blur(20px);
+    opacity: 0.7;
+    z-index: -2;
+    animation: fire 1s linear infinite;
+  }
+
+  @keyframes fire {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Partículas de fogo */
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: orange;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: flameUp linear infinite;
+  }
+
+  @keyframes flameUp {
+    0% { transform: translateY(0px) scale(1); opacity: 1; }
+    100% { transform: translateY(-80px) scale(0.3); opacity: 0; }
+  }
+
+  /* Hover do botão */
+  .doom-button:hover {
+    color: #ff0;
+    box-shadow: 0 0 40px #ff4500, 0 0 80px #ffae00, 0 0 120px #ff0000;
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<button class="doom-button">Doom</button>
+
+<script>
+  const button = document.querySelector('.doom-button');
+  const numParticles = 50;
+
+  for (let i = 0; i < numParticles; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    resetParticle(p);
+    document.body.appendChild(p);
+    animateParticle(p);
+  }
+
+  function resetParticle(p) {
+    const rect = button.getBoundingClientRect();
+    p.style.left = rect.left + rect.width/2 + (Math.random()-0.5)*rect.width + 'px';
+    p.style.top = rect.bottom + 'px';
+    p.style.background = `hsl(${Math.random()*40}, 100%, 50%)`;
+    p.style.width = `${2 + Math.random()*3}px`;
+    p.style.height = p.style.width;
+  }
+
+  function animateParticle(p) {
+    const duration = 800 + Math.random()*400;
+    const xOffset = (Math.random()-0.5) * 50;
+    const yOffset = -60 - Math.random()*40;
+
+    p.animate([
+      { transform: 'translate(0px,0px) scale(1)', opacity: 1 },
+      { transform: `translate(${xOffset}px, ${yOffset}px) scale(0.3)`, opacity: 0 }
+    ], {
+      duration: duration,
+      iterations: Infinity,
+      easing: 'linear'
+    });
+  }
+</script>
+
+</body>
+</html>

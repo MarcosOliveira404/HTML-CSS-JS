@@ -1,108 +1,230 @@
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-:root {
-    --Color: #c46115;
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fefefe;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Estilo geral */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Header */
+main {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+/* CABEÇALHO */
 header {
-    background-color: var(--Color);
-    color: white;
-    text-align: center;
-    padding: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
 }
 
 header h1 {
-    font-size: 2rem;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #222;
 }
 
-/* Lista de projetos */
-main {
-    flex: 1;
-    padding: 1rem;
+header p {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #555;
+  margin-top: 0.3rem;
 }
 
-.project-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+/* BOTÃO DE DARK MODE */
+#dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #6a0dad;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  z-index: 2000;
+  transition: background 0.3s, color 0.3s;
 }
 
-.project-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
+#dark-mode-toggle:hover {
+  background: #8e2de2;
+}
+
+/* PROJETOS */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.project-card {
+  display: inline-block;
 }
 
 .project-button {
-    width: 100%;
-    background: none;
-    border: none;
-    padding: 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--Color);
-    text-align: left;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  width: 180px;
+  padding: 1rem;
+  border: 2px solid #6a0dad;
+  background: transparent;
+  color: #6a0dad;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .project-button:hover {
-    background-color: var(--Color);
-    color: white;
+  background: #6a0dad;
+  color: #fff;
+  transform: translateY(-2px);
 }
 
-.subproject-list {
-    list-style: none;
-    padding: 0.5rem 1rem;
-    display: none;
-    border-top: 1px solid #ddd;
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
 }
 
-.subproject-list li a {
-    text-decoration: none;
-    color: #333;
-    padding: 0.5rem 0;
-    display: block;
-    transition: color 0.3s;
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 450px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: background 0.3s, color 0.3s;
 }
 
-.subproject-list li a:hover {
-    color: var(--Color);
+.modal-content h3 {
+  margin-bottom: 1rem;
+  color: #222;
 }
 
-/* Footer */
+.modal-content ul {
+  list-style: none;
+}
+
+.modal-content li {
+  margin-bottom: 0.6rem;
+}
+
+.modal-content a {
+  text-decoration: none;
+  color: #6a0dad;
+  transition: color 0.3s;
+}
+
+.modal-content a:hover {
+  color: #8e2de2;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s;
+}
+
+/* FOOTER */
 footer {
-    text-align: center;
-    background-color: #333;
-    color: white;
-    padding: 1rem;
+  background: #fff;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
 }
 
-footer > p > a{
-    color: white;
-    text-decoration: none;
+footer a {
+  text-decoration: none;
+  color: #6a0dad;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-footer > p > a:hover{
-    color: var(--Color);
+footer a:hover {
+  color: #8e2de2;
+}
+
+/* ===============================
+DARK MODE
+=============================== */
+body.dark-mode {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+body.dark-mode header {
+  background: #2c2c2c;
+}
+
+body.dark-mode header h1,
+body.dark-mode header p {
+    color: #eee; /* título e subtítulo claros */
+}
+
+
+body.dark-mode footer {
+  background: #2c2c2c;
+}
+
+body.dark-mode .modal-content h3 {
+    color: #fff; /* título branco no dark mode */
+}
+
+
+body.dark-mode .project-button {
+  border-color: #9b59b6;
+  color: #9b59b6;
+}
+
+body.dark-mode .project-button:hover {
+  background: #9b59b6;
+  color: #fff;
+}
+
+body.dark-mode .modal-content {
+  background: #2c2c2c;
+  color: #eee;
+}
+
+body.dark-mode .modal-content a {
+  color: #9b59b6;
+}
+
+body.dark-mode .modal-content a:hover {
+  color: #d084ff;
+}
+
+body.dark-mode .close {
+  color: #ccc;
 }

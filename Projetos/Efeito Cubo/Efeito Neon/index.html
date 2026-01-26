@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube Effect</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #000000 0%, #111 100%);
+            overflow: hidden;
+            perspective: 1000px;
+            font-family: Arial, sans-serif;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: radial-gradient(ellipse at center, rgba(255,0,0,0.2), transparent 70%);
+            z-index: -1;
+        }
+
+        .cube{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+            animation: animate 10s linear infinite;
+        }
+
+        @keyframes animate{
+            0% {
+                transform: rotateX(-30deg) rotateY(0deg);
+            }
+            50% {
+                transform: rotateX(-45deg) rotateY(180deg);
+            }
+            100% {
+                transform: rotateX(-30deg) rotateY(360deg);
+            }
+        }
+
+        .cube div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .cube div span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff0000, #ff4d4d);
+            border: 2px solid rgba(255,0,0,0.5);
+            box-shadow: 0 0 20px red, 0 0 40px rgba(255,0,0,0.5);
+            transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+        }
+
+        .top{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background: #131313;
+            transform: rotateX(90deg) translateZ(150px);
+            text-align: center;
+            color: #ff4d4d;
+            font-weight: bold;
+            font-size: 28px;
+            line-height: 300px;
+            text-shadow: 0 0 10px red, 0 0 20px rgba(255,0,0,0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px red, 0 0 20px rgba(255,0,0,0.5);}
+            100% { text-shadow: 0 0 30px red, 0 0 60px rgba(255,0,0,0.8);}
+        }
+
+        .cube:hover{
+            animation-play-state: paused; /* Pausa ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <!-- Creditos a "@OnlineTutorialsYT" -->
+    <div class="cube" id="cube">
+        <div class="top">@marcosoliveirazyx</div>
+        <div>
+            <span style="--i:0;"></span>
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+        </div>
+    </div>
+
+    <script>
+        const cube = document.getElementById('cube');
+        document.addEventListener('mousemove', (e) => {
+            let x = (e.clientY / window.innerHeight - 0.5) * 60; // Rotação X
+            let y = (e.clientX / window.innerWidth - 0.5) * 60; // Rotação Y
+            cube.style.transform = `rotateX(${-30 + x}deg) rotateY(${y}deg)`;
+        });
+    </script>
+</body>
+</html>

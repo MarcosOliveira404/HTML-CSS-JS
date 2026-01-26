@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botão Glass Futurista</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #0a0a0a;
+  }
+
+  .glass-button {
+    position: relative;
+    padding: 20px 60px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px) saturate(180%);
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  /* efeito de luz passando */
+  .glass-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+    transform: rotate(45deg) translateX(-200%);
+    transition: transform 0.5s ease;
+  }
+
+  .glass-button:hover::after {
+    transform: rotate(45deg) translateX(200%);
+  }
+
+  .glass-button:hover {
+    color: #00f0ff;
+    border-color: #00f0ff;
+    box-shadow: 0 8px 40px rgba(0,255,255,0.3);
+  }
+</style>
+</head>
+<body>
+
+<button class="glass-button">Glass Futurista</button>
+
+</body>
+</html>

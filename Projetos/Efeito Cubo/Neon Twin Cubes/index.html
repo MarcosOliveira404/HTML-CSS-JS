@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Double Neon Cube 3D</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        background: #111;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1200px; /* Para efeito de olhar de baixo */
+        overflow: hidden;
+    }
+
+    .cube, .cube2{
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        transform-style: preserve-3d;
+    }
+
+    /* CUBO PRINCIPAL */
+    .cube div, .cube2 div{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+    }
+
+    .cube div.big span, .cube2 div.big span{
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        box-shadow: 0 0 20px rgba(0,255,42,0.6);
+    }
+
+    .cube div.big span.top, .cube2 div.big span.top{
+        transform: rotateX(90deg) translateZ(150px);
+    }
+
+    .cube div.big span.top::before, .cube2 div.big span.top::before{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        transform: translateZ(-350px);
+        filter: blur(50px);
+    }
+
+    /* Animações */
+    .cube div{
+        animation: rotateCube 6s linear infinite;
+    }
+
+    .cube2 div{
+        animation: rotateCube2 6s linear infinite;
+        scale: 0.5;
+    }
+
+    @keyframes rotateCube{
+        0%{ transform: rotateX(40deg) rotateY(0deg);}
+        100%{ transform: rotateX(40deg) rotateY(360deg);}
+    }
+
+    @keyframes rotateCube2{
+        0%{ transform: rotateX(40deg) rotateY(360deg);}
+        100%{ transform: rotateX(40deg) rotateY(0deg);}
+    }
+
+    /* Hover Effects */
+    .cube:hover div.big span{
+        background: transparent;
+        border: 10px solid #00ff2a;
+        filter: drop-shadow(0 0 20px #00ff2a);
+    }
+
+    .cube:hover ~ .cube2 div.big span{
+        background: transparent;
+        border: 10px solid #ffffff;
+        filter: drop-shadow(0 0 20px #ffffff);
+    }
+
+</style>
+</head>
+<body>
+    <!-- Cubo principal -->
+    <div class="cube">
+        <div class="big">
+            <span style="--i:0;--clr:#00ff2a;"></span>
+            <span style="--i:1;--clr:#00ff2a;"></span>
+            <span style="--i:2;--clr:#00ff2a;"></span>
+            <span style="--i:3;--clr:#00ff2a;"></span>
+            <span class="top" style="--clr:#00ff2a;"></span>
+        </div>
+    </div>
+
+    <!-- Cubo secundário -->
+    <div class="cube2">
+        <div class="big">
+            <span style="--i:0;--clr:#ffffff;"></span>
+            <span style="--i:1;--clr:#ffffff;"></span>
+            <span style="--i:2;--clr:#ffffff;"></span>
+            <span style="--i:3;--clr:#ffffff;"></span>
+            <span class="top" style="--clr:#ffffff;"></span>
+        </div>
+    </div>
+</body>
+</html>
